@@ -25,7 +25,7 @@ if (concat.IsNothing())
   Console.WriteLine("One of the strings was bad, could not concat");
 ```
 
-LINQ will terminate the computation if there is a Nothing at any point in the
+LINQ terminates the computation if there's a `Nothing` at any point in the
 computation.
 
 ### Running a computation with a maybe type:
@@ -33,7 +33,8 @@ computation.
 ```cs
 string nullString = null;
 
-nullString.ToMaybe().Do(str => {
+nullString.ToMaybe().Do(str => 
+{
   // str will never be null, ToMaybe guards against null and Do unwraps the value
 });
 ```
@@ -67,7 +68,7 @@ Maybe<string> goodName = name1.Or(name2);
 Maybe<string> goodName = name1.Or("goodName");
 ```
 
-You can also convert value-kinded maybe types to Nullable<T>s:
+You can also convert value-kinded maybe types to `Nullable<T>`s:
 
 ```cs
 Maybe<int> maybeNumber = Maybe<int>.Nothing;
@@ -95,9 +96,12 @@ Or you can throw an exception instead:
 
 ```cs
 string val = null;
-try {
+try 
+{
   val = (Maybe<string>.Nothing).OrElse(() => new Exception("no value"));
-} catch (Exception) {
+} 
+catch (Exception) 
+{
   // exception will be thrown
 }
 ```
@@ -118,7 +122,8 @@ reference types. It also has LINQ support.
 ### Getting the first element of a list
 
 ```cs
-public static Maybe<T> Head<T>(this IEnumerable<T> xs) {
+public static Maybe<T> Head<T>(this IEnumerable<T> xs) 
+{
   foreach(var x in xs)
     return x.ToMaybe();
   return Maybe<T>.Nothing;
@@ -141,7 +146,8 @@ ConsumeHeads will never run unless all Head() calls return valid results.
 Here's a function for getting a value out of a dictionary:
 
 ```cs
-public static Maybe<T2> Lookup<T, T2>(this IDictionary<T, T2> d, T key) {
+public static Maybe<T2> Lookup<T, T2>(this IDictionary<T, T2> d, T key) 
+{
   var getter = MaybeFunctionalWrappers.Wrap(d.TryGetValue);
   return getter(key);
 }
@@ -151,7 +157,8 @@ public static Maybe<T2> Lookup<T, T2>(this IDictionary<T, T2> d, T key) {
 
 ```cs
 
-public static Maybe<int> ParseInt(string s) {
+public static Maybe<int> ParseInt(string s) 
+{
   var parser = MaybeFunctionalWrappers.Wrap(int.TryParse);
   return parser(s);
 }

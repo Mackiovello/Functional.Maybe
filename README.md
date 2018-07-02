@@ -1,6 +1,8 @@
 
 # Mackiovello.Maybe
 
+[![Build Status](https://travis-ci.org/Mackiovello/Mackiovello.Maybe.svg?branch=master)](https://travis-ci.org/Mackiovello/Mackiovello.Maybe)
+
 Option types for C# with LINQ support and rich fluent syntax for many popular uses
 
 ## Examples

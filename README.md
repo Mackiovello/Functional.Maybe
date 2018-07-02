@@ -1,5 +1,5 @@
 
-# Functional.Maybe
+# Mackiovello.Maybe
 
 Option types for C# with LINQ support and rich fluent syntax for many popular uses
 
@@ -8,7 +8,7 @@ Option types for C# with LINQ support and rich fluent syntax for many popular us
 All these examples require that you have the following using statement:
 
 ```cs
-using Functional.Maybe
+using Mackiovello.Maybe
 ```
 
 ### Computing on maybe types

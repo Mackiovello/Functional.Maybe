@@ -5,11 +5,11 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{92C7F00F-8E79-4EDF-B6EB-6840EBD3E308}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Functional.Maybe", "src\Functional.Maybe\Functional.Maybe.csproj", "{C1A87866-C460-4956-9CF7-9B53DDC2FB94}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mackiovello.Maybe", "src\Mackiovello.Maybe\Mackiovello.Maybe.csproj", "{C1A87866-C460-4956-9CF7-9B53DDC2FB94}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{94EB6A19-3A2C-4DB8-8817-CA9465AE24A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Functional.Maybe.Tests", "test\Functional.Maybe.Tests\Functional.Maybe.Tests.csproj", "{934AD3B5-7AEC-45C5-B00C-D9420AEFE5C7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mackiovello.Maybe.Tests", "test\Mackiovello.Maybe.Tests\Mackiovello.Maybe.Tests.csproj", "{934AD3B5-7AEC-45C5-B00C-D9420AEFE5C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

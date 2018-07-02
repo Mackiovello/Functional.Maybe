@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 
-namespace Functional.Maybe
+namespace Mackiovello.Maybe
 {
 	public static class MaybeDictionary
 	{

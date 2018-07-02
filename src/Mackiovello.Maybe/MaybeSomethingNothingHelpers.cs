@@ -1,4 +1,4 @@
-﻿namespace Functional.Maybe
+﻿namespace Mackiovello.Maybe
 {
 	/// <summary>
 	/// IsSomething, IsNothing and shorthands to create typed Nothing of correct type

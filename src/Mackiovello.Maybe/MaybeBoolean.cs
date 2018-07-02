@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Functional.Maybe
+namespace Mackiovello.Maybe
 {
 	/// <summary>
 	/// Ternary logic with Maybe&lt;bool&gt; and combining T and bool to a Maybe value

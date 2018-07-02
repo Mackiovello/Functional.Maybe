@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 // ReSharper disable MemberCanBePrivate.Global
 
-namespace Functional.Maybe
+namespace Mackiovello.Maybe
 {
 	/// <summary>
 	/// Composing two maybe value to one, such operations, as one.Or(another)

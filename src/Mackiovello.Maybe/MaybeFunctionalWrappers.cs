@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Functional.Maybe
+namespace Mackiovello.Maybe
 {
 	/// <summary>
 	/// Modifying passed functions making them return Maybe instead of plain type

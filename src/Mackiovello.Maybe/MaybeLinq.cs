@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics.Contracts;
 
-namespace Functional.Maybe
+namespace Mackiovello.Maybe
 {
 	/// <summary>
 	/// Providing necessary methods to enable linq syntax with Maybes themselves

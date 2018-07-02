@@ -1,5 +1,5 @@
 ﻿
-namespace Functional.Maybe.Tests
+namespace Mackiovello.Maybe.Tests
 {
     using System;
     using Xunit;

@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Functional.Maybe\Functional.Maybe.csproj" />
+    <ProjectReference Include="..\..\src\Mackiovello.Maybe\Mackiovello.Maybe.csproj" />
   </ItemGroup>
 
 </Project>

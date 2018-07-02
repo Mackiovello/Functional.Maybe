@@ -1,7 +1,21 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <Title>Maybe</Title>
+    <PackageId>Mackiovello.Maybe</PackageId>
+    <Authors>Erlend Landrö; Andrey Tsvetkov; William Casarin</Authors>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/Mackiovello/Functional.Maybe/master/LICENSE.txt</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/Mackiovello/Functional.Maybe</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Mackiovello/Functional.Maybe</RepositoryUrl>
+    <Description>Option types for C# with LINQ support and rich fluent syntax</Description>
+    <PackageTags>option; maybe; linq; fluent; functional</PackageTags>
+  </PropertyGroup>
+
+  <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <OutputType>Library</OutputType>
+    <PackageVersion>1.0.0</PackageVersion>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
 
 </Project>

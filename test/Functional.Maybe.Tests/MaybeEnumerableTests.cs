@@ -1,70 +1,70 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Linq;
-
+﻿
 namespace Functional.Maybe.Tests
 {
-	[TestClass]
-	public class MaybeEnumerableTests
-	{
-		[TestMethod]
-		public void WhereValueExist_Should_remove_Nothing_values()
-		{
-			var sequence = new Maybe<int>[] { 1.ToMaybe(), Maybe<int>.Nothing, 2.ToMaybe() };
-			int[] expected = { 1, 2 };
+    using System;
+    using Xunit;
+    using System.Linq;
 
-			var actual = sequence.WhereValueExist().ToArray();
+    public class MaybeEnumerableTests
+    {
+        [Fact]
+        public void WhereValueExist_Should_remove_Nothing_values()
+        {
+            var sequence = new Maybe<int>[] { 1.ToMaybe(), Maybe<int>.Nothing, 2.ToMaybe() };
+            int[] expected = { 1, 2 };
 
-			Assert.AreEqual(expected.Length, actual.Length);
-			for (int i = 0; i < expected.Length; i++)
-			{
-				Assert.AreEqual(expected[i], actual[i]);
-			}
-		}
+            var actual = sequence.WhereValueExist().ToArray();
 
-		[TestMethod]
-		public void Given_ThreeSome_UnionReturnsCollectionOfAll()
-		{
-			var one = 1.ToMaybe();
-			var two = 2.ToMaybe();
-			var three = 3.ToMaybe();
+            Assert.Equal(expected.Length, actual.Length);
+            for (int i = 0; i < expected.Length; i++)
+            {
+                Assert.Equal(expected[i], actual[i]);
+            }
+        }
 
-			var res = one.Union(two, three);
-			Assert.AreEqual(3, res.Count());
-			Assert.IsTrue(res.SequenceEqual(new[] { 1, 2, 3 }));
-		}
+        [Fact]
+        public void Given_ThreeSome_UnionReturnsCollectionOfAll()
+        {
+            var one = 1.ToMaybe();
+            var two = 2.ToMaybe();
+            var three = 3.ToMaybe();
 
-		[TestMethod]
-		public void Given_OneSome_UnionReturnsCollectionOfOne()
-		{
-			var one = 1.ToMaybe();
-			var two = Maybe<int>.Nothing;
+            var res = one.Union(two, three);
+            Assert.Equal(3, res.Count());
+            Assert.True(res.SequenceEqual(new[] { 1, 2, 3 }));
+        }
 
-			var res = one.Union(two);
-			Assert.AreEqual(1, res.Count());
-			Assert.IsTrue(res.SequenceEqual(new[] { 1 }));
-		}
+        [Fact]
+        public void Given_OneSome_UnionReturnsCollectionOfOne()
+        {
+            var one = 1.ToMaybe();
+            var two = Maybe<int>.Nothing;
 
-		[TestMethod]
-		public void Given_CollectionAndSome_UnionReturnsCollectionPlusSome()
-		{
-			var one = new[] { 1, 3 };
-			var two = 2.ToMaybe();
+            var res = one.Union(two);
+            Assert.Single(res);
+            Assert.True(res.SequenceEqual(new[] { 1 }));
+        }
 
-			var res = one.Union(two);
-			Assert.AreEqual(3, res.Count());
-			Assert.IsTrue(res.SequenceEqual(new[] { 1, 3, 2 }));
-		}
+        [Fact]
+        public void Given_CollectionAndSome_UnionReturnsCollectionPlusSome()
+        {
+            var one = new[] { 1, 3 };
+            var two = 2.ToMaybe();
 
-        [TestMethod]
-	    public void FirstMaybe_WhenCalledOnEmptyEnumerable_ReturnsNothing()
+            var res = one.Union(two);
+            Assert.Equal(3, res.Count());
+            Assert.True(res.SequenceEqual(new[] { 1, 3, 2 }));
+        }
+
+        [Fact]
+        public void FirstMaybe_WhenCalledOnEmptyEnumerable_ReturnsNothing()
         {
             var maybe = Enumerable.Empty<object>().FirstMaybe();
 
-            Assert.IsTrue(maybe.IsNothing());
+            Assert.True(maybe.IsNothing());
         }
 
-        [TestMethod]
+        [Fact]
         public void FirstMaybe_WhenCalledOnEnumerableWithNoMatches_ReturnsNothing()
         {
             var collection = new[] { 1, 2 };
@@ -72,10 +72,10 @@ namespace Functional.Maybe.Tests
 
             var maybe = collection.FirstMaybe(i => i == itemToSearch);
 
-            Assert.IsTrue(maybe.IsNothing());
+            Assert.True(maybe.IsNothing());
         }
 
-        [TestMethod]
+        [Fact]
         public void FirstMaybe_WhenCalledOnEnumerableWithMatches_ReturnsFirstMatchingElement()
         {
             var expectedItem = Tuple.Create(2);
@@ -89,20 +89,19 @@ namespace Functional.Maybe.Tests
 
             var maybe = collection.FirstMaybe(i => i.Item1 == 2);
 
-            Assert.IsTrue(maybe.IsSomething());
-            // use AreSame to compare expected value with actual one by reference
-            Assert.AreSame(expectedItem, maybe.Value);
+            Assert.True(maybe.IsSomething());
+            Assert.True(Object.ReferenceEquals(expectedItem, maybe.Value));
         }
 
-        [TestMethod]
-	    public void SingleMaybe_WhenCalledOnEmptyEnumerable_ReturnsNothing()
-	    {
+        [Fact]
+        public void SingleMaybe_WhenCalledOnEmptyEnumerable_ReturnsNothing()
+        {
             var maybe = Enumerable.Empty<object>().SingleMaybe();
 
-            Assert.IsTrue(maybe.IsNothing());
+            Assert.True(maybe.IsNothing());
         }
 
-        [TestMethod]
+        [Fact]
         public void SingleMaybe_WhenCalledOnEnumerableWithNoMatches_ReturnsNothing()
         {
             var collection = new[] { 1, 2 };
@@ -110,10 +109,10 @@ namespace Functional.Maybe.Tests
 
             var maybe = collection.SingleMaybe(i => i == itemToSearch);
 
-            Assert.IsTrue(maybe.IsNothing());
+            Assert.True(maybe.IsNothing());
         }
 
-        [TestMethod]
+        [Fact]
         public void SingleMaybe_WhenCalledOnNonEmptyEnumerableWithMultipleMatches_ReturnsNothing()
         {
             var collection = new[] { 1, 1, 2 };
@@ -121,10 +120,10 @@ namespace Functional.Maybe.Tests
 
             var maybe = collection.SingleMaybe(i => i == itemToSearch);
 
-            Assert.IsTrue(maybe.IsNothing());
+            Assert.True(maybe.IsNothing());
         }
 
-        [TestMethod]
+        [Fact]
         public void SingleMaybe_WhenCalledOnNonEmptyEnumerableWithSingleMatch_ReturnsSingleMatchingElement()
         {
             var collection = new[] { 1, 2, 3 };
@@ -132,19 +131,19 @@ namespace Functional.Maybe.Tests
 
             var maybe = collection.SingleMaybe(i => i == itemToSearch);
 
-            Assert.IsTrue(maybe.IsSomething());
-            Assert.AreEqual(itemToSearch, maybe.Value);
+            Assert.True(maybe.IsSomething());
+            Assert.Equal(itemToSearch, maybe.Value);
         }
 
-        [TestMethod]
+        [Fact]
         public void LastMaybe_WhenCalledOnEmptyEnumerable_ReturnsNothing()
         {
             var maybe = Enumerable.Empty<object>().LastMaybe();
 
-            Assert.IsTrue(maybe.IsNothing());
+            Assert.True(maybe.IsNothing());
         }
 
-        [TestMethod]
+        [Fact]
         public void LastMaybe_WhenCalledOnEnumerableWithNoMatches_ReturnsNothing()
         {
             var collection = new[] { 1, 2 };
@@ -152,10 +151,10 @@ namespace Functional.Maybe.Tests
 
             var maybe = collection.LastMaybe(i => i == itemToSearch);
 
-            Assert.IsTrue(maybe.IsNothing());
+            Assert.True(maybe.IsNothing());
         }
 
-        [TestMethod]
+        [Fact]
         public void LastMaybe_WhenCalledOnEnumerableWithMatches_ReturnsLastMatchingElement()
         {
             var expectedItem = Tuple.Create(2);
@@ -169,9 +168,8 @@ namespace Functional.Maybe.Tests
 
             var maybe = collection.LastMaybe(i => i.Item1 == 2);
 
-            Assert.IsTrue(maybe.IsSomething());
-            // use AreSame to compare expected value with actual one by reference
-            Assert.AreSame(expectedItem, maybe.Value);
+            Assert.True(maybe.IsSomething());
+            Assert.True(Object.ReferenceEquals(expectedItem, maybe.Value));
         }
     }
 }

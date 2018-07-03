@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Title>Maybe</Title>
+    <Title>Mackiovello.Maybe</Title>
     <PackageId>Mackiovello.Maybe</PackageId>
     <Authors>Erlend Landrö; Andrey Tsvetkov; William Casarin</Authors>
     <PackageLicenseUrl>https://raw.githubusercontent.com/Mackiovello/Mackiovello.Maybe/master/LICENSE.txt</PackageLicenseUrl>

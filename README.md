@@ -3,7 +3,23 @@
 
 [![Build Status](https://travis-ci.org/Mackiovello/Mackiovello.Maybe.svg?branch=master)](https://travis-ci.org/Mackiovello/Mackiovello.Maybe)
 
-Option types for C# with LINQ support and rich fluent syntax for many popular uses
+Option types for C# with LINQ support and rich fluent syntax for many popular uses.
+
+## Getting started
+
+To add this to your project, execute this command in the directory with your `csproj` file:
+
+```
+dotnet add package Mackiovello.Maybe
+```
+
+Alternatively, add this directly to your `csproj` file:
+
+```xml
+<PackageReference Include="Mackiovello.Maybe" Version="1.0.0" />
+```
+
+Then, add `using Mackiovello.Maybe` to the top of all the files where you want to use this library.
 
 ## Examples
 
@@ -174,3 +190,33 @@ var parsedFromDict = from val in d.Lookup("key")
                      select parsedVal;
 ```
 
+## Build and test
+
+To build this library, you need to install [.NET Core SDK 2.1](https://www.microsoft.com/net/download). If it's installed, you should be able to do this:
+
+```
+$ dotnet --version
+2.1.301
+```
+
+If your version is higher or equal to 2.1, you are good to go.
+
+To build, execute `dotnet build` at the root of the repository. Similarly, to test, execute `dotnet test` at the root:
+
+```
+$ dotnet test
+Build started, please wait...
+Build completed.
+
+Test run for /home/user/Mackiovello.Maybe/test/Mackiovello.Maybe.Tests/bin/Debug/netcoreapp2.1/Mackiovello.Maybe.Tests.dll(.NETCoreApp,Version=v2.1)
+Microsoft (R) Test Execution Command Line Tool Version 15.7.0
+Copyright (c) Microsoft Corporation.  All rights reserved.
+
+Starting test execution, please wait...
+
+Total tests: 19. Passed: 19. Failed: 0. Skipped: 0.
+Test Run Successful.
+Test execution time: 1.1823 Seconds
+```
+
+The tests are xUnit tests, so you can execute them with any xUnit test runner.
